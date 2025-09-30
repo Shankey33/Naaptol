@@ -28,7 +28,7 @@ const Navbar = () => {
     {/* Navbar logic for big screens */}
 
     {screenSize >= 768 ? (
-        <div className="bg-green-700 p-4 text-white flex items-center shadow-md mb-4">
+        <div className="bg-green-700 p-4 text-white flex items-center shadow-md">
 
         {/* Naaptol text, might replace it with logo later, but it looks good for now */}
 
@@ -61,7 +61,7 @@ const Navbar = () => {
     // Small screens
     (
         <>
-        <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md mb-4">
+        <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
             <div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div>
             <div className="text-3xl">
                 <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} onClick={handleHamburgerClick} />
@@ -70,7 +70,7 @@ const Navbar = () => {
 
         {/* Drawer menu from right */}
         <div
-            className={`fixed top-0 right-0 h-full w-65 bg-green-700 text-white shadow-lg z-50 transform transition-transform duration-300 ${
+            className={`fixed top-0 right-0 h-full w-64 bg-green-700 text-white shadow-lg z-50 transform transition-transform duration-300 ${
                 isHamMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
         >
