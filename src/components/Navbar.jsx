@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 //External imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 
 const Navbar = () => {
@@ -25,12 +27,10 @@ const Navbar = () => {
     
   return (
     <>
-    {/* Navbar logic for big screens */}
-
     {screenSize >= 768 ? (
-        <div className="bg-green-700 p-4 text-white flex items-center shadow-md">
 
-        {/* Naaptol text, might replace it with logo later, but it looks good for now */}
+        // Navbar logic for big screens
+        <div className="bg-green-700 p-4 text-white flex items-center shadow-md">
 
             <div className="title text-xl font-bold tracking-wide mr-8">Naaptol</div>
 
@@ -56,10 +56,9 @@ const Navbar = () => {
 
         </div>
     ) 
-    :
-
-    // Small screens
-    (
+    :    
+    (   
+        // Small screens
         <>
         <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
             <div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div>
@@ -80,7 +79,7 @@ const Navbar = () => {
                     onClick={handleHamburgerClick}
                     aria-label="Close menu"
                 >
-                    {/* This is equivalent for cross sign */}
+                    {/* manual cross sign, might replace it with an icon later*/}
                     &times;
                 </button>
 
@@ -91,7 +90,11 @@ const Navbar = () => {
                 
                 <a href="/login" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User</a>
                 <a href="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About</a>
-            
+                <div className=" flex flex-col px-2 w-full text-3xl justify-end gap-6 mt-6">
+                    <a href="" className="font-semibold">FAQ</a>
+                    <a href='https://www.youtube.com/naaptol' target='_blank'><FontAwesomeIcon icon={faYoutube} style={{color: "#ffffff",}}/></a>
+                    <a href="https://x.com/#!/shopatnaaptol" target='_blank'><FontAwesomeIcon icon={faXTwitter} style={{color: "#ffffff",}} /></a>
+                </div>
             </div>
         
         </div>
