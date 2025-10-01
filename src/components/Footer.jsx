@@ -18,7 +18,7 @@ const Footer = () => {
     }, [window.innerWidth]);
 
   return (
-    <div className='bg-green-700 text-white p-4 shadow-inner w-full'>
+    <div className='bg-green-700 text-white p-4 shadow-inner fixed bottom-0 left-0 w-full'>
         {screenSize >= 768 ? (
 
             // For large Screens 
