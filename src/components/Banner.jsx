@@ -8,7 +8,7 @@ import banner01 from '../assets/banner01.jpg';
 import banner02 from '../assets/banner02.jpg';
 import banner03 from '../assets/banner03.jpg';
 
-
+                                                
 const Banner = () => {
     const images = [banner01, banner02, banner03];
 
@@ -23,8 +23,8 @@ const Banner = () => {
                 {/* To do -> Add click to open functionality */}
                 
                 {images.map((src, index) => (
-                    <SwiperSlide key={index}>
-                        <img src={src} alt="banner image" className='w-150 md:w-full md:h-auto h-80 md:object-cover object-fill ' />
+                    <SwiperSlide key={index}>                        
+                        <a href="/"><img src={src} alt="banner image" className='w-150 md:w-full md:h-auto h-80 md:object-cover object-fill cursor-pointer ' /></a>
                     </SwiperSlide>
                 ))}
             </Swiper> 

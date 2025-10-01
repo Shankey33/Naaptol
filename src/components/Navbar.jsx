@@ -10,6 +10,7 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
+import {faSortDown} from "@fortawesome/free-solid-svg-icons";
 
 
 const Navbar = () => {
@@ -36,7 +37,7 @@ const Navbar = () => {
         // Navbar logic for big screens
         <div className="bg-green-700 p-4 text-white flex items-center shadow-md">
 
-        <div className="title text-2xl font-bold tracking-wide mr-8">Naaptol</div>
+        <div className="title text-2xl font-bold tracking-wide mr-8">Site</div>
 
         {/* Navigation Links */}
 
@@ -48,7 +49,7 @@ const Navbar = () => {
         {/* Search area and account buttons here */}
 
             <div className="flex items-center ml-auto">
-
+                <p className="font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer">Categories <FontAwesomeIcon className="items-center mb-1.5" icon={faSortDown} style={{color: "#ffffff",}} /></p>
                 <form action="/searc/" method="GET" className="flex gap-2 max-w-md w-full">                                                             
                     <input type="text" placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
@@ -65,7 +66,8 @@ const Navbar = () => {
         // Small screens
         <>
         <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
-            <div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div>
+            <div className="title text-4xl font-bold tracking-wide mr-8">Site</div>
+
             <div className="text-3xl">
                 <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} onClick={handleHamburgerClick} />
             </div>
@@ -90,6 +92,9 @@ const Navbar = () => {
                 
                 <a href="/login" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></a>
                 <a href="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></a>
+                <div className="categories">
+                    <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2">Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
+                </div>
                 <div className=" flex flex-col px-2 w-full text-3xl justify-end gap-6 mt-6">
                     <a href="" className="font-semibold">FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></a>
                     <a href='https://www.youtube.com/naaptol' target='_blank'><FontAwesomeIcon icon={faYoutube} style={{color: "#ffffff",}}/></a>
