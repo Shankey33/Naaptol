@@ -15,9 +15,10 @@ import {faSortDown} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
 
-    // All logic for small screen handling 
+    // Logic for small screen handling 
     const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
     const [screenSize, setScreenSize] = useState(window.innerWidth);
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     
     const handleHamburgerClick = () => {
         setIsHamMenuOpen(!isHamMenuOpen);
@@ -28,14 +29,18 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [window.innerWidth]);
-
     
+    const handleOpenCategory = () => {
+        setIsCategoryOpen(!isCategoryOpen);
+    }
+
+
   return (
     <>
     {screenSize >= 768 ? (
 
         // Navbar logic for big screens
-        <div className="bg-green-700 p-4 text-white flex items-center shadow-md">
+        <div className="bg-green-700 p-4 text-white flex items-center shadow-md sticky top-0 z-10">
 
         <div className="title text-2xl font-bold tracking-wide mr-8">Site</div>
 
@@ -49,7 +54,15 @@ const Navbar = () => {
         {/* Search area and account buttons here */}
 
             <div className="flex items-center ml-auto">
-                <p className="font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer">Categories <FontAwesomeIcon className="items-center mb-1.5" icon={faSortDown} style={{color: "#ffffff",}} /></p>
+                <p className={`font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer ${isCategoryOpen ? "text-green-300" : ''}`} onClick={handleOpenCategory}>Categories <FontAwesomeIcon className={`items-center mb-1.5`} icon={faSortDown} style={{color: "#ffffff"}} /></p>
+                
+                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-medium bg-white absolute text-black mt-35 rounded-md shadow-lg w-80 transition-all duration-300 p-2 z-20">
+                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 1</a>
+                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 2</a>
+                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 3</a>
+                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
+                </div>}
+
                 <form action="/searc/" method="GET" className="flex gap-2 max-w-md w-full">                                                             
                     <input type="text" placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
@@ -93,7 +106,13 @@ const Navbar = () => {
                 <a href="/login" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></a>
                 <a href="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></a>
                 <div className="categories">
-                    <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2">Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
+                    <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2" onClick={handleOpenCategory}>Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
+                    {isCategoryOpen && <div className="category-elements grid grid-cols-1 font-medium bg-green-800 text-white mt-2 rounded-md shadow-lg w-full transition-all duration-300 p-2">
+                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 1</a>
+                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 2</a>
+                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 3</a>
+                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
+                    </div>}
                 </div>
                 <div className=" flex flex-col px-2 w-full text-3xl justify-end gap-6 mt-6">
                     <a href="" className="font-semibold">FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></a>
