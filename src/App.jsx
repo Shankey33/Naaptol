@@ -5,15 +5,19 @@ import Home from './components/Home'
 import User from './components/User'
 import About from './components/About'
 import FAQ from './components/FAQ'
+import ProductDetails from './components/ProductDetails'
+import Cart from './components/Cart'
 
 const App = () => {
   return (
     <>
       <Navbar />
-      {/* <Home /> */}
+      <Home />
       {/* <User /> */}
-      {/* <About/> */}
-      {/* <FAQ/> */}
+      {/* <About /> */}
+      {/* <FAQ /> */}
+      {/* <ProductDetails /> */}
+      {/* <Cart /> */}
       <Footer/>
     </>
   )

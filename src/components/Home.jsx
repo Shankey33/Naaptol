@@ -11,6 +11,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 //Local imports
 import Banner from './Banner'
 import ProductCard from './ProductCard'
+import Footer from './Footer'
 
 const Home = () => {
 

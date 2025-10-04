@@ -34,7 +34,7 @@ const FAQ = () => {
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => setIsOpen1(!isOpen1)}
             >
-              <span className="font-semibold text-lg text-gray-800">Question 1</span>
+              <span className="font-semibold text-lg text-gray-800">Question: Will my product be 100% genuine and same like shown on the tv/website ?</span>
               <FontAwesomeIcon 
                 icon={isOpen1 ? faChevronUp : faChevronDown} 
                 className="text-green-700"
@@ -43,7 +43,7 @@ const FAQ = () => {
             
             {isOpen1 && (
               <div className="px-6 pb-4 text-gray-700 leading-relaxed">
-                <p>Answer 1</p>
+                <p>Answer: Yes, with Naaptol you can be rest assured with the products. We offer a 33.33% genuineess gurantee</p>
               </div>
             )}
           </div>
@@ -54,7 +54,7 @@ const FAQ = () => {
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => setIsOpen2(!isOpen2)}
             >
-              <span className="font-semibold text-lg text-gray-800">Question 2</span>
+              <span className="font-semibold text-lg text-gray-800">Question: What is the refund policy ?</span>
               <FontAwesomeIcon 
                 icon={isOpen2 ? faChevronUp : faChevronDown} 
                 className="text-green-700"
@@ -63,7 +63,7 @@ const FAQ = () => {
             
             {isOpen2 && (
               <div className="px-6 pb-4 text-gray-700 leading-relaxed">
-                <p>Answer 2</p>
+                <p>Answer: We have paid return poilicy for upto 7 days of delivery!</p>
               </div>
             )}
           </div>
@@ -74,7 +74,7 @@ const FAQ = () => {
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => setIsOpen3(!isOpen3)}
             >
-              <span className="font-semibold text-lg text-gray-800">Question 3</span>
+              <span className="font-semibold text-lg text-gray-800">Question: Aren't your products cheap ripoff imported chinese items ?</span>
               <FontAwesomeIcon 
                 icon={isOpen3 ? faChevronUp : faChevronDown} 
                 className="text-green-700"
@@ -83,7 +83,7 @@ const FAQ = () => {
             
             {isOpen3 && (
               <div className="px-6 pb-4 text-gray-700 leading-relaxed">
-                <p>Answer 3</p>
+                <p>Answer: Not at all, we only import from Japan</p>
               </div>
             )}
           </div>
@@ -94,7 +94,7 @@ const FAQ = () => {
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => setIsOpen4(!isOpen4)}
             >
-              <span className="font-semibold text-lg text-gray-800">Question 4</span>
+              <span className="font-semibold text-lg text-gray-800">Question: Your website looks like a 1st year student's side project, why is that ?</span>
               <FontAwesomeIcon 
                 icon={isOpen4 ? faChevronUp : faChevronDown} 
                 className="text-green-700"
@@ -103,7 +103,7 @@ const FAQ = () => {
             
             {isOpen4 && (
               <div className="px-6 pb-4 text-gray-700 leading-relaxed">
-                <p>Answer 4</p>
+                <p>Answer: Our real website is way bad sir!</p>
               </div>
             )}
           </div>
@@ -114,7 +114,7 @@ const FAQ = () => {
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => setIsOpen5(!isOpen5)}
             >
-              <span className="font-semibold text-lg text-gray-800">Question 5</span>
+              <span className="font-semibold text-lg text-gray-800">Question: Was this FAQ section meant to be read by the recriters ?</span>
               <FontAwesomeIcon 
                 icon={isOpen5 ? faChevronUp : faChevronDown} 
                 className="text-green-700"
@@ -123,7 +123,7 @@ const FAQ = () => {
             
             {isOpen5 && (
               <div className="px-6 pb-4 text-gray-700 leading-relaxed">
-                <p>Answer 5</p>
+                <p>Answer: NO!</p>
               </div>
             )}
           </div>
