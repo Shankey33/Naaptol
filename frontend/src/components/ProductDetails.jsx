@@ -1,6 +1,6 @@
 // React Imports
 import { useState } from 'react'
-
+import { useParams } from 'react-router-dom';
 // External Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faTruck, faUndo, faShieldAlt, faStar, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons'
@@ -10,6 +10,9 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState('reviews');
+
+  const {id} = useParams();
+  console.log(id);
 
   const product = {
     id: 1,

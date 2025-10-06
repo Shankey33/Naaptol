@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Banner from './components/Banner'
 import Footer from './components/Footer'
@@ -12,13 +13,15 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Home />
-      {/* <User /> */}
-      {/* <About /> */}
-      {/* <FAQ /> */}
-      {/* <ProductDetails /> */}
-      {/* <Cart /> */}
-      <Footer/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+      <Footer />
     </>
   )
 }

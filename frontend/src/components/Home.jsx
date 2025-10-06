@@ -8,93 +8,37 @@ import { faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
+import { useEffect } from 'react'
+import axios from 'axios'
+
 //Local imports
 import Banner from './Banner'
 import ProductCard from './ProductCard'
-import Footer from './Footer'
+
 
 const Home = () => {
 
+    const fetchProducts = async () => {
+        const response = await axios.get("http://localhost:3000/product/all");            
+        return response.data;
+    }
+
+
+
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetchProducts().then(data => setProducts(data)).catch(err => {
+            console.error('Failed to fetch products', err);
+        });
+    }, []);
 
     const handleOpenFilter = () => {
         setIsFilterOpen(!isFilterOpen);
     };
 
-    const products = [
-        {
-            id: 1,
-            name: "Product 1",
-            price: "$10",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 2,
-            name: "Product 2",
-            price: "$20",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 3,
-            name: "Product 3",
-            price: "$30",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 4,
-            name: "Product 4",
-            price: "$40",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-                {
-            id: 5,
-            name: "Product 1",
-            price: "$10",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 6,
-            name: "Product 2",
-            price: "$20",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 7,
-            name: "Product 3",
-            price: "$30",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 8,
-            name: "Product 4",
-            price: "$40",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-                {
-            id: 9,
-            name: "Product 1",
-            price: "$10",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 10,
-            name: "Product 2",
-            price: "$20",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 11,
-            name: "Product 3",
-            price: "$30",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        },
-        {
-            id: 12,
-            name: "Product 4",
-            price: "$40",
-            image: "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg"
-        }
-    ];
+
 
   return (
     <>
@@ -133,9 +77,9 @@ const Home = () => {
         </div>
         
         <div className="product-card grid sm:grid-rows-1 md:grid-cols-4 justify-center items-center mt-10 hide-scrollbar gap-15 mx-10 mb-10 sm:text-2xl">
-            {products.map(product => {
-                return <ProductCard key={product.id} product={product}/>
-            })}
+            {products.map((product) => (
+                <ProductCard key={product._id}  product={product} />
+            ))}
         </div>
       </div>
     </>

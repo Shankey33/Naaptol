@@ -1,10 +1,12 @@
 // React Imports
 import {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 // External Imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+
 
 const Footer = () => {
 
@@ -27,7 +29,7 @@ const Footer = () => {
 
                 {/* Social media and FAQ links */}
                 <div className="footer-links flex gap-10 text-xl">
-                    <a href="">FAQ</a>
+                    <Link to="/faq">FAQ</Link>
                     <a href='https://www.youtube.com/naaptol' target='_blank'><FontAwesomeIcon icon={faYoutube} style={{color: "#ffffff",}}/></a>
                     <a href="https://x.com/#!/shopatnaaptol" target='_blank'><FontAwesomeIcon icon={faXTwitter} style={{color: "#ffffff",}} /></a>
                 </div>

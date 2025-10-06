@@ -1,5 +1,6 @@
 //React imports
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 //External imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,9 +12,12 @@ import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
 import {faSortDown} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
 
 const Navbar = () => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // Logic for small screen handling 
     const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
@@ -42,13 +46,13 @@ const Navbar = () => {
         // Navbar logic for big screens
         <div className="bg-green-700 p-4 text-white flex items-center shadow-md sticky top-0 z-10">
 
-        <div className="title text-2xl font-bold tracking-wide mr-8">Site</div>
+        <Link to="/"><div className="title text-2xl font-bold tracking-wide mr-8">Naaptol</div></Link>
 
         {/* Navigation Links */}
 
             <div className="links flex gap-4 text-lg font-semibold mr-8 items-center">
-                <a href="/" className="hover:text-green-300 transition">Home <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} /></a>
-                <a href="/about" className="hover:text-green-300 transition">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></a>
+                <Link to="/" className="hover:text-green-300 transition">Home <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} /></Link>
+                <Link to="/about" className="hover:text-green-300 transition">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></Link>
             </div>
 
         {/* Search area and account buttons here */}
@@ -68,8 +72,9 @@ const Navbar = () => {
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
 
-                <a href="/login" className="hover:text-green-300 transition ml-8 text-2xl font-semibold mr-3"><FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></a>
-            
+                <Link to="/user" className="hover:text-green-300 transition ml-8 text-2xl font-semibold mr-3"><FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>
+                {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition mr-5 ml-5 flex items-center gap-1 text-xl font-semibold"><FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} />Cart</Link>}
+
             </div>
 
         </div>
@@ -79,7 +84,7 @@ const Navbar = () => {
         // Small screens
         <>
         <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
-            <div className="title text-4xl font-bold tracking-wide mr-8">Site</div>
+            <div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div>
 
             <div className="text-3xl">
                 <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} onClick={handleHamburgerClick} />
@@ -103,8 +108,9 @@ const Navbar = () => {
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
                 
-                <a href="/login" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></a>
-                <a href="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></a>
+                <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>
+                <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></Link>
+                {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}
                 <div className="categories">
                     <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2" onClick={handleOpenCategory}>Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
                     {isCategoryOpen && <div className="category-elements grid grid-cols-1 font-medium bg-green-800 text-white mt-2 rounded-md shadow-lg w-full transition-all duration-300 p-2">
@@ -115,7 +121,7 @@ const Navbar = () => {
                     </div>}
                 </div>
                 <div className=" flex flex-col px-2 w-full text-3xl justify-end gap-6 mt-6">
-                    <a href="" className="font-semibold">FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></a>
+                    <Link to="/faq" className="font-semibold">FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></Link>
                     <a href='https://www.youtube.com/naaptol' target='_blank'><FontAwesomeIcon icon={faYoutube} style={{color: "#ffffff",}}/></a>
                     <a href="https://x.com/#!/shopatnaaptol" target='_blank'><FontAwesomeIcon icon={faXTwitter} style={{color: "#ffffff",}} /></a>
                 </div>
