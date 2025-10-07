@@ -1,0 +1,522 @@
+[
+  {
+    "name": "Wireless Headphones",
+    "price": "₹3,999",
+    "discount": "50% OFF",
+    "rating": 4.6,
+    "reviewCount": 210,
+    "images": [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Experience the ultimate in audio quality with our Premium Wireless Headphones. Designed for audiophiles, these headphones deliver crystal clear sound with deep bass and crisp highs. The noise cancellation feature ensures that you are not disturbed by external sounds, allowing you to immerse yourself in your music or podcasts. With a long battery life, you can enjoy uninterrupted listening for hours on end. The ergonomic design provides a comfortable fit, making them perfect for extended use. Whether you're at home, in the office, or on the go, these headphones are the perfect companion for all your audio needs.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic & Metal" },
+      { "name": "Dimensions", "value": "18 x 15 x 7 cm" },
+      { "name": "Weight", "value": "250g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Smart Watch",
+    "price": "₹4,999",
+    "discount": "10% OFF",
+    "rating": 4.4,
+    "reviewCount": 180,
+    "images": [
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Stay connected and track your fitness goals with our feature-packed Smart Watch. This stylish and functional smartwatch is designed to make your life easier and healthier. With a heart rate monitor, you can keep track of your heart health and optimize your workouts. The AMOLED display provides vibrant colors and sharp contrast, making it easy to read notifications, messages, and fitness stats at a glance. With multiple sports modes, sleep tracking, and a sedentary reminder, this smartwatch is your perfect fitness companion. Plus, it's water-resistant, so you can wear it worry-free in any weather conditions.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Alloy" },
+      { "name": "Dimensions", "value": "4 x 4 x 1 cm" },
+      { "name": "Weight", "value": "50g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Bluetooth Speaker",
+    "price": "₹2,599",
+    "discount": "30% OFF",
+    "rating": 4.7,
+    "reviewCount": 320,
+    "images": [
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Take your music anywhere with our Portable Bluetooth Speaker. This compact and lightweight speaker is designed for music lovers on the go. Despite its small size, it delivers powerful sound with deep bass, making it perfect for any music genre. The long-lasting battery ensures that you can enjoy your favorite tunes for up to 12 hours without interruption. With its durable and water-resistant design, this speaker is ideal for outdoor use, whether you're at the beach, camping, or just hanging out in the park. Plus, the built-in microphone allows you to take hands-free calls with ease.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "10 x 10 x 5 cm" },
+      { "name": "Weight", "value": "300g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Gaming Mouse",
+    "price": "₹1,799",
+    "discount": "50% OFF",
+    "rating": 4.3,
+    "reviewCount": 95,
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Elevate your gaming experience with our Ergonomic Gaming Mouse. This high-precision mouse is designed for gamers who demand the best. With customizable RGB lighting, you can personalize your mouse to match your gaming setup or express your personal style. The ergonomic design ensures a comfortable grip, reducing fatigue during long gaming sessions. Featuring programmable buttons, you can easily access your favorite commands and macros with a single click. The durable construction and high-quality materials ensure that this mouse will withstand the rigors of intense gaming. Upgrade your gaming gear with this top-of-the-line gaming mouse.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "12 x 7 x 4 cm" },
+      { "name": "Weight", "value": "120g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "price": "₹4,999",
+    "discount": "50% OFF",
+    "rating": 4.8,
+    "reviewCount": 150,
+    "images": [
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Type with precision and speed using our RGB Backlit Mechanical Keyboard. This high-performance keyboard is designed for gamers, programmers, and anyone who demands the best from their typing experience. The mechanical switches provide tactile feedback and quick actuation, ensuring that every keystroke is registered with precision. With customizable RGB backlighting, you can create stunning lighting effects and easily find your keys in any lighting condition. The durable construction and high-quality materials ensure that this keyboard will withstand the test of time. Enhance your desktop setup with this premium mechanical keyboard.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic & Metal" },
+      { "name": "Dimensions", "value": "45 x 15 x 4 cm" },
+      { "name": "Weight", "value": "800g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "USB-C Charger",
+    "price": "₹1,199",
+    "discount": "50% OFF",
+    "rating": 4.2,
+    "reviewCount": 60,
+    "images": [
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Charge your devices faster with our Fast Charging USB-C Adapter. This compact and lightweight charger is designed for people on the go. With its powerful output, it can charge your devices up to 50% faster than standard chargers. The USB-C compatibility ensures that it works with a wide range of devices, including smartphones, tablets, and laptops. The durable construction and high-quality materials ensure that this charger will withstand the rigors of daily use. Plus, the built-in safety features protect your devices from overcharging and overheating, giving you peace of mind while charging.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "5 x 5 x 3 cm" },
+      { "name": "Weight", "value": "80g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Laptop Stand",
+    "price": "₹2,399",
+    "discount": "50% OFF",
+    "rating": 4.5,
+    "reviewCount": 110,
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Improve your posture and reduce neck strain with our Adjustable Aluminum Laptop Stand. This sturdy and lightweight stand is designed to elevate your laptop to eye level, promoting a healthier working posture. The adjustable height and angle settings allow you to find the perfect viewing position, whether you're sitting or standing. The premium aluminum construction ensures durability and stability, while the sleek design adds a touch of elegance to your workspace. Compatible with all laptop sizes, this stand is a must-have for anyone who spends long hours working on a laptop.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Aluminum" },
+      { "name": "Dimensions", "value": "25 x 20 x 5 cm" },
+      { "name": "Weight", "value": "400g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Webcam",
+    "price": "₹2,999",
+    "discount": "50% OFF",
+    "rating": 4.1,
+    "reviewCount": 70,
+    "images": [
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Connect with colleagues, friends, and family like never before with our HD Webcam. This high-definition webcam is designed to deliver crystal clear video for all your video conferencing and streaming needs. The built-in microphone ensures that your voice is heard loud and clear, while the adjustable clip allows you to easily attach it to any monitor or laptop. With its plug-and-play design, it's easy to set up and start using in seconds. Whether you're working from home, attending online classes, or just catching up with loved ones, this webcam is the perfect solution for all your video communication needs.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "8 x 4 x 4 cm" },
+      { "name": "Weight", "value": "90g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "External Hard Drive",
+    "price": "₹6,999",
+    "discount": "50% OFF",
+    "rating": 4.6,
+    "reviewCount": 140,
+    "images": [
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Store and protect your important data with our 1TB Portable External Hard Drive. This high-capacity hard drive is designed for fast data transfer and reliable storage. The compact and lightweight design makes it easy to carry with you wherever you go, while the durable construction ensures that your data is safe from bumps and drops. With its plug-and-play functionality, it's easy to use with any computer or laptop. Plus, the sleek and stylish design means it looks as good as it performs. Keep your data secure and accessible with this premium external hard drive.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "12 x 8 x 2 cm" },
+      { "name": "Weight", "value": "200g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Wireless Router",
+    "price": "₹4,399",
+    "discount": "50% OFF",
+    "rating": 4.3,
+    "reviewCount": 85,
+    "images": [
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Enjoy high-speed internet access with our Dual-Band WiFi Router. This powerful router is designed to provide fast and reliable internet connectivity for all your devices. With dual-band technology, it can operate on both the 2.4GHz and 5GHz bands, ensuring a stable and speedy connection even in crowded network environments. The wide coverage area means that you can enjoy strong WiFi signals in every corner of your home or office. Plus, the sleek and modern design means it will look great in any setting. Upgrade your internet experience with this top-of-the-line wireless router.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "20 x 15 x 4 cm" },
+      { "name": "Weight", "value": "300g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Action Camera",
+    "price": "₹8,999",
+    "discount": "50% OFF",
+    "rating": 4.7,
+    "reviewCount": 160,
+    "images": [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Capture your adventures in stunning detail with our Waterproof Action Camera. This high-definition camera is designed for outdoor enthusiasts and extreme sports lovers. With its durable and waterproof design, you can take it with you anywhere, whether you're surfing, skiing, hiking, or just exploring the great outdoors. The compact and lightweight design makes it easy to carry, while the high-quality lens and sensor ensure that you get amazing photos and videos every time. Plus, the built-in WiFi allows you to easily share your adventures on social media. Document your adventures like never before with this premium action camera.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "6 x 4 x 3 cm" },
+      { "name": "Weight", "value": "80g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Fitness Band",
+    "price": "₹2,399",
+    "discount": "50% OFF",
+    "rating": 4.2,
+    "reviewCount": 90,
+    "images": [
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Achieve your fitness goals with our advanced Fitness Band. This stylish and lightweight band is designed to be worn all day and night, tracking your activity, heart rate, and sleep patterns. With its accurate and reliable sensors, you can monitor your health and fitness levels in real-time. The long-lasting battery ensures that you can go for days without needing to recharge. Plus, the water-resistant design means you can wear it in any weather conditions. Stay motivated and on track with this essential fitness companion.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "5 x 2 x 1 cm" },
+      { "name": "Weight", "value": "30g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Tablet",
+    "price": "₹16,999",
+    "discount": "50% OFF",
+    "rating": 4.5,
+    "reviewCount": 120,
+    "images": [
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Discover a world of entertainment and productivity with our 10-inch Tablet. This powerful and versatile tablet is designed to meet all your computing needs, whether you're browsing the web, watching videos, or working on the go. The high-definition display provides stunning visuals, while the fast processor ensures smooth and responsive performance. With its lightweight and portable design, you can take it with you anywhere, making it the perfect device for both work and play. Plus, the long-lasting battery means you can use it all day without needing to recharge. Experience the ultimate in mobile computing with this premium tablet.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "25 x 15 x 1 cm" },
+      { "name": "Weight", "value": "400g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Smartphone",
+    "price": "₹29,999",
+    "discount": "50% OFF",
+    "rating": 4.6,
+    "reviewCount": 250,
+    "images": [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Experience the latest in smartphone technology with our cutting-edge Android Smartphone. This top-of-the-line smartphone is designed for those who demand the best in performance, camera quality, and display. The quad-camera system allows you to capture stunning photos and videos in any lighting condition, while the AMOLED display provides vibrant colors and deep blacks for an immersive viewing experience. With its powerful processor and ample RAM, you can expect lightning-fast performance whether you're gaming, streaming, or multitasking. Plus, the sleek and modern design means it looks as good as it performs. Upgrade your mobile experience with this premium smartphone.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Glass & Metal" },
+      { "name": "Dimensions", "value": "16 x 7 x 0.8 cm" },
+      { "name": "Weight", "value": "180g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Power Bank",
+    "price": "₹2,199",
+    "discount": "50% OFF",
+    "rating": 4.3,
+    "reviewCount": 75,
+    "images": [
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Never run out of battery on the go with our high-capacity Power Bank. This portable charger is designed to keep your devices powered up wherever you are. With a capacity of 10000mAh, it can charge most smartphones up to three times on a single charge. The compact and lightweight design makes it easy to carry in your bag or pocket, while the durable construction ensures that it can withstand the rigors of daily use. The multiple safety features protect your devices from overcharging, overheating, and short-circuiting, giving you peace of mind while charging. Stay connected and powered up with this essential mobile accessory.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "14 x 7 x 2 cm" },
+      { "name": "Weight", "value": "220g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Earbuds",
+    "price": "₹2,599",
+    "discount": "50% OFF",
+    "rating": 4.4,
+    "reviewCount": 130,
+    "images": [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Enjoy your music like never before with our True Wireless Stereo Earbuds. These state-of-the-art earbuds are designed to deliver high-fidelity sound with deep bass and clear highs. The compact and lightweight design makes them incredibly comfortable to wear, while the advanced noise isolation technology ensures that you can enjoy your music without any distractions. With a long battery life, you can listen to your favorite tunes for hours on end. The built-in microphone allows for hands-free calling, making them perfect for on-the-go use. Experience the freedom and convenience of wireless audio with these premium earbuds.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "6 x 4 x 3 cm" },
+      { "name": "Weight", "value": "40g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Monitor",
+    "price": "₹13,999",
+    "discount": "50% OFF",
+    "rating": 4.5,
+    "reviewCount": 105,
+    "images": [
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Upgrade your workspace or gaming setup with our 24-inch Full HD Monitor. This high-quality monitor is designed to provide stunning visuals with accurate colors and sharp details. The ultra-thin bezels offer a sleek and modern look, while the adjustable stand allows you to find the perfect viewing angle. With multiple connectivity options, including HDMI and DisplayPort, it's easy to connect to any computer or gaming console. The built-in speakers provide convenient audio output, eliminating the need for external speakers. Enhance your viewing experience with this premium full HD monitor.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "55 x 35 x 5 cm" },
+      { "name": "Weight", "value": "3kg" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Printer",
+    "price": "₹8,999",
+    "discount": "50% OFF",
+    "rating": 4.2,
+    "reviewCount": 60,
+    "images": [
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Meet all your printing needs with our versatile All-in-One Wireless Printer. This compact and efficient printer is designed for home and office use, offering printing, scanning, and copying capabilities in one device. The wireless connectivity allows you to print from anywhere in your home or office, making it incredibly convenient to use. With its high-quality printing technology, you can expect sharp and vibrant prints every time. The energy-efficient design helps you save on electricity bills, while the durable construction ensures that it will last for years to come. Simplify your printing tasks with this reliable all-in-one printer.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "40 x 30 x 15 cm" },
+      { "name": "Weight", "value": "4kg" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "Desk Lamp",
+    "price": "₹1,399",
+    "discount": "50% OFF",
+    "rating": 4.3,
+    "reviewCount": 55,
+    "images": [
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Illuminate your workspace with our stylish and functional LED Desk Lamp. This modern desk lamp is designed to provide optimal lighting for reading, writing, or working on your computer. The adjustable brightness and color temperature settings allow you to customize the lighting to suit your needs and preferences. The touch controls make it easy to adjust the settings with just a tap. The sleek and minimalist design means it will fit seamlessly into any decor style, while the durable construction ensures that it will last for years to come. Upgrade your workspace with this premium desk lamp.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "15 x 10 x 35 cm" },
+      { "name": "Weight", "value": "500g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  },
+  {
+    "name": "VR Headset",
+    "price": "₹15,999",
+    "discount": "50% OFF",
+    "rating": 4.6,
+    "reviewCount": 70,
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+    ],
+    "description": "Step into the future of gaming and entertainment with our Virtual Reality Headset. This state-of-the-art VR headset is designed to provide an immersive and interactive experience like no other. With its high-resolution display and advanced motion tracking, you can explore virtual worlds, play games, and watch movies in a whole new way. The comfortable and adjustable design ensures a perfect fit for any head size, while the durable construction means it can withstand the rigors of regular use. Compatible with a wide range of devices, this VR headset is the ultimate accessory for gamers and tech enthusiasts alike.",
+    "specifications": [
+      { "name": "Material", "value": "Premium Plastic" },
+      { "name": "Dimensions", "value": "20 x 15 x 10 cm" },
+      { "name": "Weight", "value": "600g" },
+      { "name": "Warranty", "value": "1 Year" }
+    ],
+    "features": [
+      "Durable construction",
+      "Water-resistant finish",
+      "Ergonomic design",
+      "Easy to clean",
+      "Lightweight and portable"
+    ]
+  }
+]

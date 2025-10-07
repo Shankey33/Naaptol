@@ -25,7 +25,7 @@ const Footer = () => {
 
             // For large Screens 
             <div className="footer-content flex justify-between items-center">
-                <div>&copy; 2025 Naaptol.</div>
+                <div>&copy; 2025 Site.</div>
 
                 {/* Social media and FAQ links */}
                 <div className="footer-links flex gap-10 text-xl">

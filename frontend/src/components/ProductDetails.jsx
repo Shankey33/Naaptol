@@ -1,48 +1,43 @@
 // React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 // External Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faTruck, faUndo, faShieldAlt, faStar, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { redirect } from 'react-router-dom';
+
+//Internal imports
+import loading from '../assets/Loading.gif'
 
 const ProductDetails = () => {
-  // State for selected quantity, selected image, and active tab
+
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState('reviews');
-
+  const [product, setProduct] = useState({});
   const {id} = useParams();
-  console.log(id);
 
-  const product = {
-    id: 1,
-    name: "Premium Product Name",
-    price: "₹1,499",
-    originalPrice: "₹2,999",
-    discount: "50% OFF",
-    rating: 4.5,
-    reviewCount: 133,
-    images: [
-      "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg",
-      "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg",
-      "https://sampling.com/image/cache/data/Sample_Containers/Sample_Containers2-300x300.jpg",
-    ],
-    description: "This premium product offers exceptional quality and value. Made with high-grade materials for durability and performance. Perfect for everyday use with its versatile design and practical features.",
-    specifications: [
-      { name: "Material", value: "Premium Quality" },
-      { name: "Dimensions", value: "10 x 15 x 5 cm" },
-      { name: "Weight", value: "250g" },
-      { name: "Warranty", value: "1 Year" }
-    ],
-    features: [
-      "Durable construction",
-      "Water-resistant finish",
-      "Ergonomic design",
-      "Easy to clean",
-      "Lightweight and portable"
-    ]
-  };
+  useEffect(() => {
+      
+      if(id){
+        axios.get('http://localhost:3000/product/' + id)
+          .then(response => setProduct(response.data))
+            .catch(err => {
+              console.log('Error setting product details', err);
+              toast.error('Error fetching product details. Please try again later.');
+              redirect('/');
+            })
+      } else {
+          toast.error('No product ID provided. Please select a product to view its details.');
+          redirect('/');
+        }
+  }, []);
 
+  const itemPrice = product.price;
+  const itemOrignalPrice = product.price + (product.price * product.discount / 100);
+  
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -53,9 +48,11 @@ const ProductDetails = () => {
     }
   };
 
+    if(!product || product.images === undefined){
+      return <div className="md:mb-100 md:ml-170 md:mt-50 mt-70 mb-100 ml-35"><img src={loading} alt="loading..." /></div>
+    }
 
-
-  return (
+    return (
     <div className="bg-gray-100 py-8 pb-16">
       <div className="container mx-auto px-4">
 
@@ -97,9 +94,9 @@ const ProductDetails = () => {
               </div>
 
               <div className="mb-6">
-                <span className="text-3xl font-bold text-green-700 mr-2">{product.price}</span>
-                <span className="text-lg text-gray-500 line-through">{product.originalPrice}</span>
-                <span className="ml-2 bg-red-100 text-red-700 px-2 py-1 rounded text-sm font-semibold">{product.discount}</span>
+                <span className="text-3xl font-bold text-green-700 mr-2">₹{itemPrice}</span>
+                <span className="text-lg text-gray-500 line-through">₹{itemOrignalPrice}</span>
+                <span className="ml-2 bg-red-100 text-red-700 px-2 py-1 rounded text-sm font-semibold">{product.discount}% Off</span>
               </div>
 
               
@@ -341,8 +338,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-    </div>
-  )
+    </div>)
 }
 
 export default ProductDetails

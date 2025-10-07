@@ -46,7 +46,7 @@ const Navbar = () => {
         // Navbar logic for big screens
         <div className="bg-green-700 p-4 text-white flex items-center shadow-md sticky top-0 z-10">
 
-        <Link to="/"><div className="title text-2xl font-bold tracking-wide mr-8">Naaptol</div></Link>
+        <Link to="/"><div className="title text-2xl font-bold tracking-wide mr-8">Site</div></Link>
 
         {/* Navigation Links */}
 
@@ -67,7 +67,7 @@ const Navbar = () => {
                     <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
                 </div>}
 
-                <form action="/searc/" method="GET" className="flex gap-2 max-w-md w-full">                                                             
+                <form action="/search/" method="GET" className="flex gap-2 max-w-md w-full">                                                             
                     <input type="text" placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
