@@ -19,3 +19,31 @@ export const getProductById = async (req, res) => {
         res.status(404)
     }
 }
+
+
+export const getProductsByCategory = async (req, res) => {
+    const { category } = req.params;
+    try {
+        const products = await Product.find({ category: category });
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const getProductBySearch = async (req, res) => {
+    const { query } = req.params;
+    try{
+        const products = await Product.find({ $text: { $search: query }});
+
+        if(products.length === 0){
+            return res.status(404).json({ message: "No products found" });
+        }
+
+        res.status(200).json(products);       
+    }
+    catch (err){
+        res.status(500).json(err);
+        console.log(("Error in searching products: ", err));
+    }
+}

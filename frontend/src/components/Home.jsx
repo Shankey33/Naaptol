@@ -1,5 +1,5 @@
 //React imports
-import {useState} from 'react'
+import {useState, useContext, useEffect} from 'react'
 
 //External imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,39 +7,63 @@ import { faFilter } from '@fortawesome/free-solid-svg-icons'
 import { faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-
-import { useEffect } from 'react'
 import axios from 'axios'
 
 //Local imports
 import Banner from './Banner'
 import ProductCard from './ProductCard'
+import loading from '../assets/loading.gif'
+import { SearchContext } from '../SearchContext.jsx'    
 
 
 const Home = () => {
 
-    const fetchProducts = async () => {
-        const response = await axios.get("http://localhost:3000/product/all");            
-        return response.data;
+    const {searchQuery, setSearchQuery} = useContext(SearchContext);
+
+    const fetchProducts = async (searchQuery) => {
+
+        if(searchQuery && searchQuery.trim() !== ''){
+            const response = await axios.get(`http://localhost:3000/product/search/${searchQuery}`);            
+            return response.data;
+        }
+        else {
+            const response = await axios.get("http://localhost:3000/product/all");            
+            return response.data;
+        }
     }
-
-
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetchProducts().then(data => setProducts(data)).catch(err => {
+        fetchProducts(searchQuery).then(data => setProducts(data)).catch(err => {
             console.error('Failed to fetch products', err);
         });
-    }, []);
+    }, [searchQuery]);
+    
+
 
     const handleOpenFilter = () => {
         setIsFilterOpen(!isFilterOpen);
     };
 
+    if(!products || products.length === 0){
+        return <div className="md:mb-100 md:ml-170 md:mt-50 mt-70 mb-100 ml-35"><img src={loading} alt="loading..." /></div>
+    }
 
+    const sortAscending = () => {
+        const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        setProducts(sortedProducts);
+        setIsFilterOpen(false);
+    }
 
+    const sortDescending = () => {
+        const sortedProducts = [...products].sort((a, b) => b.price - a.price);
+        setProducts(sortedProducts);
+        setIsFilterOpen(false);
+    }
+
+    
   return (
     <>
       <Banner />
@@ -57,13 +81,13 @@ const Home = () => {
                                 <h3 className="font-semibold mb-2">Sort By</h3>
                                 <div className="space-y-2">
                                     <div className="flex items-center">
-                                        <input type="radio" name="sort" id="price-asc" className="mr-2" />
+                                        <input type="radio" name="sort" id="price-asc" className="mr-2" onChange={sortAscending}/>
                                         <label htmlFor="price-asc" className="flex items-center">
                                             Price <FontAwesomeIcon icon={faAngleUp} className="ml-1" style={{color: "#000000"}} />
                                         </label>
                                     </div>
                                     <div className="flex items-center">
-                                        <input type="radio" name="sort" id="price-desc" className="mr-2" />
+                                        <input type="radio" name="sort" id="price-desc" className="mr-2" onChange={sortDescending}/>
                                         <label htmlFor="price-desc" className="flex items-center">
                                             Price <FontAwesomeIcon icon={faAngleDown} className="ml-1" style={{color: "#000000"}} />
                                         </label>
@@ -75,10 +99,10 @@ const Home = () => {
                 }
             </div>
         </div>
-        
+
         <div className="product-card grid sm:grid-rows-1 md:grid-cols-4 justify-center items-center mt-10 hide-scrollbar gap-15 mx-10 mb-10 sm:text-2xl">
             {products.map((product) => (
-                <ProductCard key={product._id}  product={product} />
+                <ProductCard key={product._id} product={product} />
             ))}
         </div>
       </div>

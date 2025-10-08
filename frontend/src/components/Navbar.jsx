@@ -1,6 +1,9 @@
 //React imports
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
+//Local Imports
+import { SearchContext } from "../SearchContext.jsx";
 
 //External imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,11 +16,14 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
 import {faSortDown} from "@fortawesome/free-solid-svg-icons";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios";
 
 const Navbar = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const {searchQuery, setSearchQuery} = useContext(SearchContext);
+
+    
 
     // Logic for small screen handling 
     const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
@@ -38,6 +44,9 @@ const Navbar = () => {
         setIsCategoryOpen(!isCategoryOpen);
     }
 
+    const searchItem = (query) => {
+        setSearchQuery(query);
+    }
 
   return (
     <>
@@ -67,8 +76,8 @@ const Navbar = () => {
                     <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
                 </div>}
 
-                <form action="/search/" method="GET" className="flex gap-2 max-w-md w-full">                                                             
-                    <input type="text" placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
+                <form action={() => searchItem(searchQuery)} className="flex gap-2 max-w-md w-full">                                                             
+                    <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
 
@@ -84,7 +93,7 @@ const Navbar = () => {
         // Small screens
         <>
         <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
-            <div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div>
+            <Link to="/" ><div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div></Link>
 
             <div className="text-3xl">
                 <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} onClick={handleHamburgerClick} />
@@ -103,11 +112,11 @@ const Navbar = () => {
                 <button className="self-end text-3xl mb-2 focus:outline-none" onClick={handleHamburgerClick}> &times;</button>
 
                 {/* Search form here */}
-                <form action="/search/" method="GET" className="flex gap-2 max-w-md w-full mb-2 mt-8 text-1xl">
-                    <input type="text" placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />
-                    <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
+                <form action={() => searchItem(searchQuery)} className="flex gap-2 max-w-md w-full">                                                             
+                    <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
+                    <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" onClick={handleHamburgerClick}/>
                 </form>
-                
+                    
                 <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>
                 <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></Link>
                 {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}

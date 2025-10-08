@@ -6,34 +6,70 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faTruck, faUndo, faShieldAlt, faStar, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { redirect } from 'react-router-dom';
+import { redirect } from 'react-router-dom';  
+import { Swiper, SwiperSlide } from 'swiper/react'; //Swiper for similar products slider
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 
 //Internal imports
 import loading from '../assets/Loading.gif'
+import ProductCard from './ProductCard';
 
 const ProductDetails = () => {
 
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [activeTab, setActiveTab] = useState('reviews');
-  const [product, setProduct] = useState({});
+  const [activeTab, setActiveTab] = useState('specifications');
+  const [product, setProduct] = useState({});   // For active product details
+  const [products, setProducts] = useState([]); // For similar products
   const {id} = useParams();
+  let category = "";
 
   useEffect(() => {
       
       if(id){
+        //Main product api call
         axios.get('http://localhost:3000/product/' + id)
-          .then(response => setProduct(response.data))
+          .then(response => {
+              setProduct(response.data)
+              category = response.data.category;
+              //Similar products api call
+              axios.get('http://localhost:3000/product/category/' + category)
+                .then(res => {
+                  setProducts(res.data)
+                })
+                .catch(err => {
+                  console.log('Error setting similar products', err);
+                  toast.error('Error fetching similar products. Please try again later.');
+                }
+              );
+            })
             .catch(err => {
               console.log('Error setting product details', err);
               toast.error('Error fetching product details. Please try again later.');
               redirect('/');
             })
+        
       } else {
           toast.error('No product ID provided. Please select a product to view its details.');
           redirect('/');
         }
   }, []);
+
+    
+  const changeProduct = (id) => {
+    axios.get('http://localhost:3000/product/' + id)
+      .then(response => {
+          setProduct(response.data)
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(err => {
+          console.log('Error setting product details', err);
+          toast.error('Error fetching product details. Please try again later.');
+          redirect('/');
+        })
+  }
 
   const itemPrice = product.price;
   const itemOrignalPrice = product.price + (product.price * product.discount / 100);
@@ -312,30 +348,31 @@ const ProductDetails = () => {
         {/* Similar Products section */}
         <div className="mt-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Similar Products</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-            {/* to do -> add similar procucts from the product database */}
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <div className="w-full h-40 bg-gray-200 mb-3 rounded"></div>
-              <h3 className="font-semibold">Similar Product 1</h3>
-              <p className="text-green-700">₹1,299</p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <div className="w-full h-40 bg-gray-200 mb-3 rounded"></div>
-              <h3 className="font-semibold">Similar Product 2</h3>
-              <p className="text-green-700">₹1,199</p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <div className="w-full h-40 bg-gray-200 mb-3 rounded"></div>
-              <h3 className="font-semibold">Similar Product 3</h3>
-              <p className="text-green-700">₹1,399</p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <div className="w-full h-40 bg-gray-200 mb-3 rounded"></div>
-              <h3 className="font-semibold">Similar Product 4</h3>
-              <p className="text-green-700">₹1,499</p>
-            </div>
-          </div>
+          
+          <Swiper
+            modules={[Navigation]}
+            navigation
+            spaceBetween={5}
+            slidesPerView={3}
+            breakpoints={{
+              300: { slidesPerView: 1 },
+              400: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+            className='pb-6 sd:'
+            preventClicks={false}
+            preventClicksPropagation={false}
+          >
+            {products.map((product) => (
+                <SwiperSlide key={product._id}>
+                  <div onClick={() => changeProduct(product._id)}>
+                    <ProductCard product={product} />
+                  </div>
+                </SwiperSlide>
+            ))}
+          </Swiper>
+        
         </div>
       </div>
     </div>)
