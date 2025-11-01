@@ -1,5 +1,6 @@
 //React imports
 import {useState, useContext, useEffect} from 'react'
+import { useParams, useLocation } from 'react-router-dom'
 
 //External imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,14 +14,20 @@ import axios from 'axios'
 import Banner from './Banner'
 import ProductCard from './ProductCard'
 import loading from '../assets/loading.gif'
-import { SearchContext } from '../SearchContext.jsx'    
-
+import { SearchContext } from '../SearchContext.jsx'
 
 const Home = () => {
+
+    const categoryName = useParams().categoryName;
 
     const {searchQuery, setSearchQuery} = useContext(SearchContext);
 
     const fetchProducts = async (searchQuery) => {
+
+        if(categoryName){
+            const response = await axios.get(`http://localhost:3000/category/?type=${categoryName}`);            
+            return response.data;
+        }
 
         if(searchQuery && searchQuery.trim() !== ''){
             const response = await axios.get(`http://localhost:3000/product/search/${searchQuery}`);            
@@ -39,7 +46,7 @@ const Home = () => {
         fetchProducts(searchQuery).then(data => setProducts(data)).catch(err => {
             console.error('Failed to fetch products', err);
         });
-    }, [searchQuery]);
+    }, [searchQuery, categoryName]);
     
 
 
@@ -101,7 +108,8 @@ const Home = () => {
         </div>
 
         <div className="product-card grid sm:grid-rows-1 md:grid-cols-4 justify-center items-center mt-10 hide-scrollbar gap-15 mx-10 mb-10 sm:text-2xl">
-            {products.map((product) => (
+            {
+            products.map((product) => (
                 <ProductCard key={product._id} product={product} />
             ))}
         </div>

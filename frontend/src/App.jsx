@@ -9,14 +9,18 @@ import FAQ from './components/FAQ'
 import ProductDetails from './components/ProductDetails'
 import Cart from './components/Cart'
 import { SearchProvider } from './SearchContext'
+import { AuthProvider } from './AuthContext'
+
 
 const App = () => {
   return (
     <>
+      <AuthProvider>
       <SearchProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/category/:categoryName" element={<Home />} />
           <Route path="/user" element={<User />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
@@ -25,6 +29,7 @@ const App = () => {
         </Routes>
         <Footer />
       </ SearchProvider>
+      </AuthProvider>
     </>
   )
 }

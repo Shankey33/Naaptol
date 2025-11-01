@@ -11,6 +11,7 @@ const mongoDbURI = process.env.mongoDbURI;
 import userRoutes from './Routes/userRoutes.js';
 import productRouter from './Routes/productRoute.js';
 import bannerRouter from './Routes/bannerRoute.js';
+import categoryRouter from './Routes/categoryRoute.js';
 
 
 
@@ -25,6 +26,7 @@ app.use(cors());
 app.use('/user', userRoutes);
 app.use('/product', productRouter);
 app.use('/banner', bannerRouter);
+app.use('/category', categoryRouter);
 
 
 mongoose.connect(mongoDbURI)

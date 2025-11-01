@@ -1,6 +1,7 @@
 //React imports
 import { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
+
 
 //Local Imports
 import { SearchContext } from "../SearchContext.jsx";
@@ -22,14 +23,15 @@ const Navbar = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const {searchQuery, setSearchQuery} = useContext(SearchContext);
-
+    const navigate = useNavigate();
     
 
     // Logic for small screen handling 
     const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
     const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-    
+    const [categories, setCategories] = useState([]);
+
     const handleHamburgerClick = () => {
         setIsHamMenuOpen(!isHamMenuOpen);
     }
@@ -48,6 +50,20 @@ const Navbar = () => {
         setSearchQuery(query);
     }
 
+    useEffect(() => {
+        const categoriesFetch = async () => {
+            const response = await axios.get('http://localhost:3000/category/?type=all');
+            setCategories(response.data);
+        }
+        categoriesFetch();
+    }, []);
+
+    const handleReload = () => {
+        setSearchQuery(""); 
+        navigate('/');
+        
+    }
+
   return (
     <>
     {screenSize >= 768 ? (
@@ -60,7 +76,7 @@ const Navbar = () => {
         {/* Navigation Links */}
 
             <div className="links flex gap-4 text-lg font-semibold mr-8 items-center">
-                <Link to="/" className="hover:text-green-300 transition">Home <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} /></Link>
+                <Link to="/" className="hover:text-green-300 transition"><span onClick={handleReload}>Home <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} /></span></Link>
                 <Link to="/about" className="hover:text-green-300 transition">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></Link>
             </div>
 
@@ -69,11 +85,10 @@ const Navbar = () => {
             <div className="flex items-center ml-auto">
                 <p className={`font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer ${isCategoryOpen ? "text-green-300" : ''}`} onClick={handleOpenCategory}>Categories <FontAwesomeIcon className={`items-center mb-1.5`} icon={faSortDown} style={{color: "#ffffff"}} /></p>
                 
-                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-medium bg-white absolute text-black mt-35 rounded-md shadow-lg w-80 transition-all duration-300 p-2 z-20">
-                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 1</a>
-                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 2</a>
-                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 3</a>
-                    <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
+                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-small bg-white absolute text-black mt-80 rounded-md shadow-lg w-100 transition-all duration-300 p-4 z-20">
+                    {categories.map((category) => (
+                        <a key={category._id} href={`/category/${category}`} className="block px-4 py-2 hover:bg-green-600 rounded-md">{category}</a>
+                    ))}
                 </div>}
 
                 <form action={() => searchItem(searchQuery)} className="flex gap-2 max-w-md w-full">                                                             

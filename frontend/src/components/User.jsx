@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock, faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
+import { AuthContext } from '../AuthContext'
 
 const User = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const { login, register } = useContext(AuthContext);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -13,6 +20,18 @@ const User = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleUserAuth = async(e) => {
+
+    e.preventDefault();
+    if(isLogin) {
+      login(email, password);
+    }
+    else{
+      register(name, email, password);
+    };
+  }
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 pb-20">
@@ -25,7 +44,7 @@ const User = () => {
           </p>
         </div>
 
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleUserAuth}>
           <div className="relative">
             <label htmlFor="email" className="block text-gray-700 mb-2 font-semibold">Email</label>
             <div className="flex items-center">
@@ -37,6 +56,8 @@ const User = () => {
                 id="email"
                 className="w-full py-2 px-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -53,7 +74,9 @@ const User = () => {
                   type="text"
                   id="name"
                   className="w-full py-2 px-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="John Doe"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
             </div>
@@ -71,6 +94,8 @@ const User = () => {
                 id="password"
                 className="w-full py-2 px-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div 
                 className="absolute right-3 text-gray-500 cursor-pointer" 
@@ -94,14 +119,10 @@ const User = () => {
                   id="confirmPassword"
                   className="w-full py-2 px-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   placeholder="********"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-            </div>
-          )}
-
-          {isLogin && (
-            <div className="text-right">
-              <a href="#" className="text-sm text-green-700 hover:text-green-800">Forgot password?</a>
             </div>
           )}
 
