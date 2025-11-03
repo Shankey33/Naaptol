@@ -23,8 +23,8 @@ const ProductDetails = () => {
   const [activeTab, setActiveTab] = useState('specifications');
   const [product, setProduct] = useState({});   // For active product details
   const [products, setProducts] = useState([]); // For similar products
+  const [category, setCategory] = useState(""); 
   const {id} = useParams();
-  let category = "";
 
   useEffect(() => {
       
@@ -33,20 +33,19 @@ const ProductDetails = () => {
         axios.get('http://localhost:3000/product/' + id)
           .then(response => {
               setProduct(response.data)
-              category = response.data.category;
+              setCategory(response.data.category);
               //Similar products api call
-              axios.get('http://localhost:3000/product/category/' + category)
+              axios.get('http://localhost:3000/product/category/' + response.data.category)
                 .then(res => {
                   setProducts(res.data)
                 })
                 .catch(err => {
                   console.log('Error setting similar products', err);
-                  toast.error('Error fetching similar products. Please try again later.');
                 }
               );
             })
             .catch(err => {
-              console.log('Error setting product details', err);
+              console.log('Error fetching product details', err);
               toast.error('Error fetching product details. Please try again later.');
               redirect('/');
             })
@@ -92,10 +91,10 @@ const ProductDetails = () => {
     <div className="bg-gray-100 py-8 pb-16">
       <div className="container mx-auto px-4">
 
-        <div className="text-sm text-gray-500 mb-6">
-          <a href="/" className="hover:text-green-700">Home</a> &gt; <a href="/category" className="hover:text-green-700">Category</a> &gt; <span className="text-gray-700">{product.name}</span>
-        </div>
-
+        {/* Breadcrumbs */}
+          <div className="text-sm text-gray-500 mb-6">
+            <a href="/" className="hover:text-green-700">Home</a> &gt; <a href={"/category/"+category} className="hover:text-green-700">{category}</a> &gt; <span className="text-gray-700">{product.name}</span>
+          </div>
         {/* Product details main section */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="md:flex">

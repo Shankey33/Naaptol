@@ -62,3 +62,27 @@ export const loginUser = async (req, res) => {
         return res.status(500).json({ message: "Server error" });
     }
 }
+
+export const auth = (req, res, next) => {
+    const token = req.header('x-auth-token');
+    if(!token){
+        return res.status(401).json({ message: "No authentication token, authorization denied" });
+    }
+
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    if(!verified){
+        return res.status(401).json({ message: "Token verification failed, authorization denied" });
+    }
+    req.user = verified;
+    next();
+}
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  } 
+};

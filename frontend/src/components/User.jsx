@@ -11,10 +11,11 @@ const User = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { login, register } = useContext(AuthContext);
+  const { login, register, error, setError } = useContext(AuthContext);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setError(null);
   };
 
   const togglePasswordVisibility = () => {
@@ -46,6 +47,11 @@ const User = () => {
 
         <form className="space-y-6" onSubmit={handleUserAuth}>
           <div className="relative">
+            {error && 
+              <div className="mb-4 p-3 text-red-700 bg-red-100 border border-red-400 rounded">
+                {error}
+              </div>
+            }
             <label htmlFor="email" className="block text-gray-700 mb-2 font-semibold">Email</label>
             <div className="flex items-center">
               <div className="absolute left-3 text-gray-500">

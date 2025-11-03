@@ -5,6 +5,7 @@ import { Link, redirect, useNavigate } from "react-router-dom";
 
 //Local Imports
 import { SearchContext } from "../SearchContext.jsx";
+import { AuthContext } from "../AuthContext.jsx";
 
 //External imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,7 +25,16 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const {searchQuery, setSearchQuery} = useContext(SearchContext);
     const navigate = useNavigate();
-    
+    const {user} = useContext(AuthContext);
+
+    useEffect(() => {
+        if(user){
+            setIsLoggedIn(true);
+        }
+        else{
+            setIsLoggedIn(false);
+        }
+    }, [user]);
 
     // Logic for small screen handling 
     const [isHamMenuOpen, setIsHamMenuOpen] = useState(false);
@@ -85,7 +95,7 @@ const Navbar = () => {
             <div className="flex items-center ml-auto">
                 <p className={`font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer ${isCategoryOpen ? "text-green-300" : ''}`} onClick={handleOpenCategory}>Categories <FontAwesomeIcon className={`items-center mb-1.5`} icon={faSortDown} style={{color: "#ffffff"}} /></p>
                 
-                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-small bg-white absolute text-black mt-80 rounded-md shadow-lg w-100 transition-all duration-300 p-4 z-20">
+                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-small bg-white absolute text-black mt-100 rounded-md shadow-lg w-100 transition-all duration-300 p-4 z-20">
                     {categories.map((category) => (
                         <a key={category._id} href={`/category/${category}`} className="block px-4 py-2 hover:bg-green-600 rounded-md">{category}</a>
                     ))}
@@ -96,7 +106,7 @@ const Navbar = () => {
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
 
-                <Link to="/user" className="hover:text-green-300 transition ml-8 text-2xl font-semibold mr-3"><FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>
+                {!isLoggedIn && <Link to="/user" className="hover:text-green-300 transition ml-8 text-2xl font-semibold mr-3"><FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>}
                 {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition mr-5 ml-5 flex items-center gap-1 text-xl font-semibold"><FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} />Cart</Link>}
 
             </div>
@@ -132,20 +142,19 @@ const Navbar = () => {
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" onClick={handleHamburgerClick}/>
                 </form>
                     
-                <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>
-                <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></Link>
+                <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2"><span onClick={handleHamburgerClick}>User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></span></Link>
+                <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2"><span onClick={handleHamburgerClick}>About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></span></Link>
                 {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}
                 <div className="categories">
                     <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2" onClick={handleOpenCategory}>Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
-                    {isCategoryOpen && <div className="category-elements grid grid-cols-1 font-medium bg-green-800 text-white mt-2 rounded-md shadow-lg w-full transition-all duration-300 p-2">
-                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 1</a>
-                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 2</a>
-                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 3</a>
-                        <a href="" className="block px-4 py-2 hover:bg-green-600 rounded-md">Category 4</a>
+                    {isCategoryOpen && <div className="category-elements grid grid-cols-1 font-medium bg-green-800 text-white mt-2 rounded-md shadow-lg w-full transition-all duration-300 p-2 overflow-y-auto max-h-80">
+                        {categories.map((category) => (
+                            <a key={category._id} href={`/category/${category}`} className="block px-4 py-2 hover:bg-green-600 rounded-md">{category}</a>
+                        ))}
                     </div>}
                 </div>
                 <div className=" flex flex-col px-2 w-full text-3xl justify-end gap-6 mt-6">
-                    <Link to="/faq" className="font-semibold">FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></Link>
+                    <Link to="/faq" className="font-semibold"><span onClick={handleHamburgerClick}>FAQ <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",}} /></span></Link>
                     <a href='https://www.youtube.com/naaptol' target='_blank'><FontAwesomeIcon icon={faYoutube} style={{color: "#ffffff",}}/></a>
                     <a href="https://x.com/#!/shopatnaaptol" target='_blank'><FontAwesomeIcon icon={faXTwitter} style={{color: "#ffffff",}} /></a>
                 </div>

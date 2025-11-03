@@ -10,6 +10,7 @@ import ProductDetails from './components/ProductDetails'
 import Cart from './components/Cart'
 import { SearchProvider } from './SearchContext'
 import { AuthProvider } from './AuthContext'
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App = () => {
@@ -25,7 +26,11 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+            }/>
         </Routes>
         <Footer />
       </ SearchProvider>

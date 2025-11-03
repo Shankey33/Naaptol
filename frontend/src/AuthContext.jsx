@@ -6,13 +6,16 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if(token) {
             axios.get('http://localhost:3000/user/', {headers: {'x-auth-token': token}})
             .then(response => setUser(response.data))
-            .catch(() => localStorage.removeItem('token'))
+            .catch((error) => {
+                console.log('Error while fetching the user', error);
+                localStorage.removeItem('token')})
             .finally(() => setLoading(false));
         } else {
             setLoading(false);
@@ -26,11 +29,11 @@ export const AuthProvider = ({children}) => {
         })
             .then(response => {
                 setUser(response.data);
-                
+                localStorage.setItem('token', response.data.token);    
                 window.location.href = '/';
             })
             .catch(error => {
-                console.error('Error during login:', error);
+                setError(error.response?.data?.message || error.message);
             });
     };
 
@@ -44,15 +47,16 @@ export const AuthProvider = ({children}) => {
             window.location.reload();
         }).
         catch(error => {
-            console.error('Error during registration:', error);   
+            setError(error.response?.data?.message || error.message);   
         })
     }
 
     const logout = () => {
         setUser(null);
+        localStorage.removeItem('token');
     };
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
+        <AuthContext.Provider value={{ user, error, setError, login, register, logout }}>
             {children}
         </AuthContext.Provider>
     );

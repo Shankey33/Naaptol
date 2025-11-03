@@ -108,8 +108,7 @@ const Home = () => {
         </div>
 
         <div className="product-card grid sm:grid-rows-1 md:grid-cols-4 justify-center items-center mt-10 hide-scrollbar gap-15 mx-10 mb-10 sm:text-2xl">
-            {
-            products.map((product) => (
+            {products.map((product) => (
                 <ProductCard key={product._id} product={product} />
             ))}
         </div>
