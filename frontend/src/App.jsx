@@ -11,6 +11,8 @@ import Cart from './components/Cart'
 import { SearchProvider } from './SearchContext'
 import { AuthProvider } from './AuthContext'
 import PrivateRoute from './components/PrivateRoute';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
@@ -18,6 +20,7 @@ const App = () => {
     <>
       <AuthProvider>
       <SearchProvider>
+        <ToastContainer />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

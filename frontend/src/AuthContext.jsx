@@ -1,5 +1,6 @@
 import {useState, createContext, useEffect} from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
@@ -7,15 +8,34 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [cart, setCart] = useState([]);
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if(token) {
             axios.get('http://localhost:3000/user/', {headers: {'x-auth-token': token}})
-            .then(response => setUser(response.data))
+            .then(response => {
+                setUser(response.data);
+                let userCart = response.data.cart || [];
+                userCart = userCart.map(item => item.productId);
+                console.log("User cart product IDs: ", userCart);
+                if(userCart.length > 0) {
+                    console.log("Fetching cart items for product IDs again: ", userCart);
+                    axios.get(`http://localhost:3000/product/cart/items?productId=${userCart.join(',')}`, {headers: {'x-auth-token': token}})
+                    .then(res => {
+                        setCart(res.data);
+                    })
+                    .catch(err => {
+                        console.error('Error fetching cart items', err.message);
+                    });
+                }
+            })
             .catch((error) => {
-                console.log('Error while fetching the user', error);
-                localStorage.removeItem('token')})
+                console.log('Error while fetching the user, sign in again', error.message);
+                localStorage.removeItem('token')
+                Navigate('/login');
+            })
             .finally(() => setLoading(false));
         } else {
             setLoading(false);
@@ -51,12 +71,43 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const updateCart = (updatedCart) => {
+        if(!Array.isArray(updatedCart) || updatedCart.length === 0){
+            setCart([]);
+            axios.post('http://localhost:3000/user/updateCart', {cart: []
+            }, {headers: { 'x-auth-token': localStorage.getItem('token') }});
+            return;
+        }
+
+        const backendCart = updatedCart.map(item => ({
+            productId: item.productId || item._id,
+            quantity: item.quantity
+        }));
+
+        console.log("Updating cart with: ", backendCart);
+        axios.post('http://localhost:3000/user/updateCart', {cart: backendCart
+        }, {headers: { 'x-auth-token': localStorage.getItem('token') }}
+        ).then(response => {
+            console.log("Cart updated successfully");
+            setCart(updatedCart);
+        })
+        .catch(error => {
+            console.error("Error updating cart:", error);
+        });
+    };
+
+    const removeItem = (id) => {
+        const updatedCart = cart.filter(item => (item._id || item.productId) !== id);
+        console.log("Removing item with id:", id, "Updated cart:", updatedCart);
+        updateCart(updatedCart);
+    }
+
     const logout = () => {
         setUser(null);
         localStorage.removeItem('token');
     };
     return (
-        <AuthContext.Provider value={{ user, error, setError, login, register, logout }}>
+        <AuthContext.Provider value={{ user, error, setError, login, register, logout, updateCart, removeItem,  cart, loading }}>
             {children}
         </AuthContext.Provider>
     );

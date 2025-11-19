@@ -18,6 +18,8 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 import {faHouse} from "@fortawesome/free-solid-svg-icons";
 import {faSortDown} from "@fortawesome/free-solid-svg-icons";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faUserMinus} from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
 
 const Navbar = () => {
@@ -25,7 +27,7 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const {searchQuery, setSearchQuery} = useContext(SearchContext);
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
+    const {user, logout} = useContext(AuthContext);
 
     useEffect(() => {
         if(user){
@@ -74,6 +76,10 @@ const Navbar = () => {
         
     }
 
+    const handleLogOut = () => {
+        logout();
+    }
+
   return (
     <>
     {screenSize >= 768 ? (
@@ -101,13 +107,17 @@ const Navbar = () => {
                     ))}
                 </div>}
 
-                <form action={() => searchItem(searchQuery)} className="flex gap-2 max-w-md w-full">                                                             
+                <form className="flex gap-2 max-w-md w-full" action={() => searchItem(searchQuery)}>                                                             
                     <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" />
                 </form>
 
                 {!isLoggedIn && <Link to="/user" className="hover:text-green-300 transition ml-8 text-2xl font-semibold mr-3"><FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></Link>}
-                {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition mr-5 ml-5 flex items-center gap-1 text-xl font-semibold"><FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} />Cart</Link>}
+                {isLoggedIn && <>
+                    <Link to="/cart" className="hover:text-green-300 transition mr-5 ml-5 flex items-center gap-1 text-xl font-semibold"><FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} />Cart</Link>
+                    <Link to="/" className="hover:text-green-300 transition mr-5 ml-5 flex items-center gap-1 text-xl font-semibold"><FontAwesomeIcon icon={faUserMinus} style={{color: "#ffffff",}} onClick={handleLogOut}/></Link> 
+                    </>
+                }
 
             </div>
 
@@ -134,17 +144,23 @@ const Navbar = () => {
             <div className="flex flex-col p-6 space-y-4">
 
                 {/* manual cross sign, might replace it with an icon later*/}
-                <button className="self-end text-3xl mb-2 focus:outline-none" onClick={handleHamburgerClick}> &times;</button>
+                <button className="self-end text-5xl mb-2 focus:outline-none" onClick={handleHamburgerClick}> &times;</button>
 
                 {/* Search form here */}
-                <form action={() => searchItem(searchQuery)} className="flex gap-2 max-w-md w-full">                                                             
+                <form action={() => {
+                    searchItem(searchQuery)
+                    navigate('/');
+                    }} className="flex gap-2 max-w-md w-full">                                                             
                     <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search here..." className="px-2 py-1 rounded-md text-gray-900 focus:outline-none w-full" />                                                         
                     <input type="submit" value="Search" className="bg-white text-green-700 px-3 py-1 rounded-md font-semibold hover:bg-green-100 cursor-pointer transition" onClick={handleHamburgerClick}/>
                 </form>
                     
-                <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2"><span onClick={handleHamburgerClick}>User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></span></Link>
+                {!isLoggedIn && <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2"><span onClick={handleHamburgerClick}>User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></span></Link>}
+                {isLoggedIn && 
+                    <Link to="/" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">Log out  <FontAwesomeIcon icon={faUserMinus} style={{color: "#ffffff",}} onClick={handleLogOut}/></Link> 
+                }
                 <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2"><span onClick={handleHamburgerClick}>About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></span></Link>
-                {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2">Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}
+                {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2" onClick={handleHamburgerClick}>Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}
                 <div className="categories">
                     <p className="font-semibold text-3xl px-2 mt-6 flex flex-row items-center gap-2" onClick={handleOpenCategory}>Categories <FontAwesomeIcon className="items-center mb-2" icon={faSortDown} style={{color: "#ffffff",}} /></p>
                     {isCategoryOpen && <div className="category-elements grid grid-cols-1 font-medium bg-green-800 text-white mt-2 rounded-md shadow-lg w-full transition-all duration-300 p-2 overflow-y-auto max-h-80">

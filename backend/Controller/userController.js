@@ -64,17 +64,21 @@ export const loginUser = async (req, res) => {
 }
 
 export const auth = (req, res, next) => {
-    const token = req.header('x-auth-token');
-    if(!token){
-        return res.status(401).json({ message: "No authentication token, authorization denied" });
-    }
+    try{
+        const token = req.header('x-auth-token');
+        if(!token){
+            return res.status(401).json({ message: "No authentication token, authorization denied" });
+        }
 
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    if(!verified){
-        return res.status(401).json({ message: "Token verification failed, authorization denied" });
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        if(!verified){
+            return res.status(401).json({ message: "Token verification failed, authorization denied" });
+        }
+        req.user = verified;
+        next();
+    } catch(err){
+        res.status(500).json({ message: "Token expired, sign in again" });
     }
-    req.user = verified;
-    next();
 }
 
 export const getUserProfile = async (req, res) => {
@@ -86,3 +90,36 @@ export const getUserProfile = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   } 
 };
+
+export const updateUserCart = async (req, res) => {
+    
+    if(!req.user.id) {
+        return res.status(400).json({ message: "User ID is required" });
+    }
+    
+    const userId = req?.user?.id;
+    const user = await User.findById(userId).select('cart');
+    try {
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        if(req.body.cart === undefined){
+            return res.status(400).json({ message: "Cart data is required" });
+        }
+        console.log("Updating cart for user:", userId, "with data:", req.body.cart);
+        user.cart = req.body.cart;
+        await user.save();
+        return res.sendStatus(200);
+    } catch (error) {
+        return res.status(500).json({ message: "Server error while trying to update user's cart, Line 108 userController"});
+    }
+};
+
+export const getUserCart = async (req, res) => {
+    const userId = req.user.id;
+    const user = await User.findById(userId).select('cart');
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ cart: user.cart });
+}

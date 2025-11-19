@@ -1,6 +1,6 @@
 // React Imports
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react'
+import { useParams, useNavigate } from 'react-router-dom';
 // External Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faTruck, faUndo, faShieldAlt, faStar, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +15,7 @@ import { Navigation } from 'swiper/modules';
 //Internal imports
 import loading from '../assets/Loading.gif'
 import ProductCard from './ProductCard';
+import { AuthContext } from '../AuthContext';
 
 const ProductDetails = () => {
 
@@ -25,6 +26,8 @@ const ProductDetails = () => {
   const [products, setProducts] = useState([]); // For similar products
   const [category, setCategory] = useState(""); 
   const {id} = useParams();
+  const{user, cart, updateCart, removeItem} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
       
@@ -83,9 +86,61 @@ const ProductDetails = () => {
     }
   };
 
-    if(!product || product.images === undefined){
-      return <div className="md:mb-100 md:ml-170 md:mt-50 mt-70 mb-100 ml-35"><img src={loading} alt="loading..." /></div>
+  if(!product || product.images === undefined){
+    return <div className="md:mb-100 md:ml-170 md:mt-50 mt-70 mb-100 ml-35"><img src={loading} alt="loading..." /></div>
+  }
+
+  const handleAddToCart = async () => {
+    if (user) {
+      console.log("Step 1: cart before updating:", cart);
+      
+      if (!cart || cart.length === 0) {
+        const newCartItem = { ...product, quantity, productId: product._id };
+        updateCart([newCartItem]);
+        toast.success('Product added to cart successfully!');
+        return;
+      }
+      
+      const existingItem = cart.find(item => (item._id === product._id || item.productId === product._id));
+      console.log("Step 2: existing item", existingItem);
+      
+      if (existingItem) {
+        console.log("Product already in cart, updating quantity.");
+        const updatedCart = cart.map(item =>
+          (item._id === product._id || item.productId === product._id)
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+        updateCart(updatedCart);
+        toast.success('Cart updated successfully!');
+      } 
+      else {
+        console.log("Product not in cart, adding new item.");
+        const newCartItem = { ...product, quantity, productId: product._id };
+        updateCart([...cart, newCartItem]);
+        toast.success('Product added to cart successfully!');
+      }
+      
+    } else {
+      navigate('/user');
     }
+  }
+
+  const handleBuyNow = () => {
+    if(!user){
+      navigate('/user');
+      return;
+    }
+    handleAddToCart()
+    .then(() => {
+      navigate('/cart');
+    })
+    .catch(err => {
+      toast.error('Error processing your request. Please try again later.');
+      console.log('Error processing Buy Now', err);
+    })
+
+  }
 
     return (
     <div className="bg-gray-100 py-8 pb-16">
@@ -98,7 +153,6 @@ const ProductDetails = () => {
         {/* Product details main section */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="md:flex">
-
             {/* Product Images */}
             <div className="md:w-1/2 p-4">
               <div className="mb-4">
@@ -161,11 +215,11 @@ const ProductDetails = () => {
 
 
               <div className="flex flex-col md:flex-row gap-3 mb-6">
-                <button className="flex-1 bg-white border-2 border-green-700 text-green-700 py-3 px-6 rounded-md font-semibold hover:bg-green-50 transition flex items-center justify-center">
+                <button className="flex-1 bg-white border-2 border-green-700 text-green-700 py-3 px-6 rounded-md font-semibold hover:bg-green-50 transition flex items-center justify-center" onClick={handleAddToCart}>
                   <FontAwesomeIcon icon={faShoppingCart} className="mr-2" />
                   Add to Cart
                 </button>
-                <button className="flex-1 bg-green-700 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-800 transition flex items-center justify-center">
+                <button className="flex-1 bg-green-700 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-800 transition flex items-center justify-center" onClick={handleBuyNow}>
                   Buy Now
                 </button>
               </div>
