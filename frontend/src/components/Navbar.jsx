@@ -87,7 +87,7 @@ const Navbar = () => {
         // Navbar logic for big screens
         <div className="bg-green-700 p-4 text-white flex items-center shadow-md sticky top-0 z-10">
 
-        <Link to="/"><div className="title text-2xl font-bold tracking-wide mr-8">Site</div></Link>
+        <Link to="/"><div className="title text-2xl font-bold tracking-wide mr-8">Naapptol</div></Link>
 
         {/* Navigation Links */}
 
@@ -101,7 +101,7 @@ const Navbar = () => {
             <div className="flex items-center ml-auto">
                 <p className={`font-semibold mr-5 flex flex-row items-center gap-1 cursor-pointer ${isCategoryOpen ? "text-green-300" : ''}`} onClick={handleOpenCategory}>Categories <FontAwesomeIcon className={`items-center mb-1.5`} icon={faSortDown} style={{color: "#ffffff"}} /></p>
                 
-                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-small bg-white absolute text-black mt-100 rounded-md shadow-lg w-100 transition-all duration-300 p-4 z-20">
+                {isCategoryOpen && <div className="category-elements grid grid-cols-2 font-small bg-white absolute text-black mt-90 rounded-md shadow-lg w-100 transition-all duration-300 p-4 z-20">
                     {categories.map((category) => (
                         <a key={category._id} href={`/category/${category}`} className="block px-4 py-2 hover:bg-green-600 rounded-md">{category}</a>
                     ))}
@@ -128,7 +128,7 @@ const Navbar = () => {
         // Small screens
         <>
         <div className="bg-green-700 p-4 text-white flex items-center justify-between shadow-md">
-            <Link to="/" ><div className="title text-4xl font-bold tracking-wide mr-8">Naaptol</div></Link>
+            <Link to="/" ><div className="title text-4xl font-bold tracking-wide mr-8">Naapptol</div></Link>
 
             <div className="text-3xl">
                 <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} onClick={handleHamburgerClick} />
@@ -157,7 +157,7 @@ const Navbar = () => {
                     
                 {!isLoggedIn && <Link to="/user" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2"><span onClick={handleHamburgerClick}>User <FontAwesomeIcon icon={faUserPlus} style={{color: "#ffffff",}} /></span></Link>}
                 {isLoggedIn && 
-                    <Link to="/" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">Log out  <FontAwesomeIcon icon={faUserMinus} style={{color: "#ffffff",}} onClick={handleLogOut}/></Link> 
+                    <span onClick={handleLogOut}><Link to="/" className="text-3xl hover:text-green-300 transition font-semibold mt-25 px-2">Log out  <FontAwesomeIcon icon={faUserMinus} style={{color: "#ffffff",}} /></Link></span>
                 }
                 <Link to="/about" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2"><span onClick={handleHamburgerClick}>About <FontAwesomeIcon icon={faBuilding} style={{color: "#ffffff",}} /></span></Link>
                 {isLoggedIn && <Link to="/cart" className="hover:text-green-300 transition text-3xl font-semibold mt-6 px-2" onClick={handleHamburgerClick}>Cart <FontAwesomeIcon icon={faShoppingCart} style={{color: "#ffffff",}} /></Link>}
